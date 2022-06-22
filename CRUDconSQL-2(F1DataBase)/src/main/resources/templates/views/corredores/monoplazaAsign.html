@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white"></div>
+			<div class="card-body">
+				<form th:action="@{/views/monoplazas/asignar/{id}(id = ${Persona.id})}" th:object="${Persona}" method="post">
+					<div class="form-group">
+						<label class="col-md-2" for="nombre">Nombre</label>
+						<input type="text" class="form-control form-control-sm col-md-6" id="nombre" th:field="*{nombre}">
+					</div>
+					<div class="form-group">
+						<label class = "col-md-2" for="vehiculo"> Vehiculos Dispo </label>
+						<select th:field="${Persona.vehiculo}" name = "vehiculo" id="vehiculo">
+						<option th:each=" auto: ${Monoplaza}" th:value="${auto.id}" th:text="${auto.modelo}">
+						</option>
+						</select>
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Asignar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+
+</html>

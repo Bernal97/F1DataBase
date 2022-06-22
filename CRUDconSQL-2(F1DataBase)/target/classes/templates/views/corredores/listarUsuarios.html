@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<h1 th:text="${Titulo}"> </h1>
+	</div>
+	<div class = "container text-center">
+	<form class= "form-inline" th:action="@{/views/corredores/}">
+	<label> Filtrar por Victorias: </label>
+	<input type = "text" name ="victorias" class ="form-control" id="victorias" th:value="${victorias}">
+	<input type = "submit" class = "btn btn-info" value ="buscar">
+	&nbsp;&nbsp;
+	</form>
+	</div>
+	<div class="container">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Victorias</th>					
+					<th scope="col">Acciones</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="usr: ${Persona}">
+					<td scope="row" th:text="${usr.nombre}"></td>
+					<td th:text="${usr.apellido}"></td>
+					<td th:text="${usr.victorias}"></td>				
+					<td>
+					<a class = "btn btn-primary" th:href ="@{/views/corredores/asignar/{id}(id = ${usr.id})}">Asignar Monoplaza</a>
+					<a class = "btn btn-secondary" th:href ="@{/views/corredores/editar/{id}(id = ${usr.id})}">Editar</a>
+					<a class = "btn btn-danger" th:href ="@{/views/corredores/eliminar/{id}(id = ${usr.id})}">Eliminar</a>
+					</td>
+				</tr>			
+			</tbody>
+		</table>
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+
+</html>

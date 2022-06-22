@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white"></div>
+			<div class="card-body">
+				<form th:action="@{/views/monoplazas/save}" th:object="${Monoplaza}" method="post">
+					<div class="form-group">
+						<label class="col-md-2" for="equipo">Equipo</label>
+						<input type="text" class="form-control form-control-sm col-md-6" id="equipo" th:field="*{equipo}">
+					</div>
+					<div class="form-group">
+						<label class="col-md-2" for="modelo">Modelo</label>
+						<input type="text" class="form-control form-control-sm col-md-6" id="modelo" th:field="*{modelo}">
+					</div>
+					<!--
+					<div class="form-group">
+						<label class="col-md-2" for="dni">Corredor</label>
+						<input type="text" class="form-control form-control-sm col-md-6" id="dni" th:field="*{victorias}">
+					</div>
+					-->
+					<button type="submit" class="btn btn-primary">Create</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+
+</html>

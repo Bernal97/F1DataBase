@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white"></div>
+			<div class="card-body">
+				<form th:action="@{/views/corredores/save}" th:object="${Persona}" method="post">
+					<div class="form-group">
+						<label class="col-md-2" for="nombre">Nombre</label>
+						<input type="text" class="form-control form-control-sm col-md-6" id="nombre" th:field="*{nombre}">
+					</div>
+					<div class="form-group">
+						<label class="col-md-2" for="apellido">Apellido</label>
+						<input type="text" class="form-control form-control-sm col-md-6" id="apellido" th:field="*{apellido}">
+					</div>
+					<div class="form-group">
+						<label class="col-md-2" for="dni">Victorias</label>
+						<input type="text" class="form-control form-control-sm col-md-6" id="dni" th:field="*{victorias}">
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Create</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+
+</html>

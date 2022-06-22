@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<h1 th:text="${Titulo}"> </h1>
+	</div>
+	<div class = "container text-center">
+	<form class= "form-inline" th:action="@{/views/monoplazas/}">
+	<label> Filtrar por Equipo: </label>
+	<input type = "text" name ="equipoClave" class ="form-control" id="equipoClave" th:value="${equipoClave}">
+	<input type = "submit" class = "btn btn-info" value ="buscar">
+	&nbsp;&nbsp;
+	</form>
+	</div>
+	<div class="container">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Equipo</th>
+					<th scope="col">Modelo</th>
+					<th scope="col">Corredor Activo</th>					
+					<th scope="col">Acciones</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="usr: ${Monoplaza}">
+					<td scope="row" th:text="${usr.equipo}"></td>
+					<td th:text="${usr.modelo}"></td>
+					<td th:text="${usr.corredor}"></td>				
+					<td>
+					<a class = "btn btn-secondary" th:href ="@{/views/monoplazas/editar/{id}(id = ${usr.id})}">Editar</a>
+					<a class = "btn btn-danger" th:href ="@{/views/monoplazas/eliminar/{id}(id = ${usr.id})}">Eliminar</a>
+					</td>
+				</tr>			
+			</tbody>
+		</table>
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+
+</html>
